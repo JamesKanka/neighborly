@@ -37,12 +37,18 @@ Mobile-first web app for neighborhood item lending with waitlists, QR/NFC item l
    - `EMAIL_FROM`
    - `POSTMARK_SERVER_TOKEN`
    - `POSTMARK_MESSAGE_STREAM` (optional, defaults to `outbound`)
-3. Apply migrations:
-   - `npm run migrate`
-4. Install dependencies:
+3. Install dependencies:
    - `npm install`
-5. Run dev server:
+4. Start dev server:
    - `npm run dev`
+   - This now runs `db:init:dev` automatically before dev startup.
+   - `db:init:dev` uses Drizzle to push schema changes to your local DB when `DATABASE_URL` is set.
+   - It is skipped in `production` and `CI`.
+5. Optional manual DB commands:
+   - `npm run db:push` (sync schema directly)
+   - `npm run db:generate` (generate SQL migrations)
+   - `npm run db:migrate` (run generated migrations)
+   - `npm run db:studio` (open Drizzle Studio)
 
 ## Generate Dummy Data
 - Run:

@@ -3,16 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "npm run db:init:dev",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "db:init:dev": "node scripts/db-init-dev.mjs",
+    "db:push": "drizzle-kit push --config=drizzle.config.ts --force",
+    "db:generate": "drizzle-kit generate --config=drizzle.config.ts",
+    "db:migrate": "drizzle-kit migrate --config=drizzle.config.ts",
+    "db:studio": "drizzle-kit studio --config=drizzle.config.ts",
     "seed": "node scripts/seed.mjs",
     "repair:qr": "node scripts/repair-qr.mjs",
     "migrate": "node scripts/migrate.mjs"
   },
   "dependencies": {
+    "drizzle-orm": "^0.44.5",
     "next": "^16.1.6",
     "next-auth": "^4.24.11",
     "pg": "^8.13.1",
@@ -27,6 +34,7 @@
     "@types/qrcode": "^1.5.5",
     "@types/react": "^18.3.17",
     "@types/react-dom": "^18.3.5",
+    "drizzle-kit": "^0.31.4",
     "eslint": "^9.39.2",
     "eslint-config-next": "^16.1.6",
     "typescript": "^5.7.2"
